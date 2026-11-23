@@ -19,7 +19,20 @@ Route::middleware('auth')->group(function () {
 });
 
 
-Route::get('/profile', [BackendProfileController::class, 'index'])->name('profile.index');
+
+
+/**
+ * BACKEND ROUTES
+ */
+Route::prefix('/admin/')->group(function () {
+
+    //**PROFILE UPDATE */
+    Route::get('/profile', [BackendProfileController::class, 'index'])->name('profile.index');
+    Route::post('/profile', [BackendProfileController::class, 'update'])->name('profile.update.own');
+    
+});
+
+
 
 
 require __DIR__.'/auth.php';
